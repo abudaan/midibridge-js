@@ -1,4 +1,3 @@
-
 This version is supported by all browsers that support native JSON parsing:
   - Firefox 3.5+
   - Chrome 4.0+
@@ -6,8 +5,7 @@ This version is supported by all browsers that support native JSON parsing:
   - Opera 10.5+
   - Internet Explorer 8.0+
  
-If you want this version to work with other browsers, you can use the JSON parsing methods of your favorite Javascript
-framework (e.g. jQuery, Dojo, YUI, Mootools, etc.)
+If you want this version to work with other browsers, you can use the JSON parsing methods of your favorite Javascript framework (e.g. jQuery, Dojo, YUI, Mootools, etc.)
  
 Note for IE8 users: if you include MidiBridge.js in your html, the method addEventListener will be added to the window object.
 In fact this method is just a wrapper around the attachEvent method, see code at the bottom of the MidiBridge.js file.
@@ -18,20 +16,18 @@ The most simple way to add the midibridge to your code is like so:
         yourCoolMethod(midiEvent);
     });
     
-Initializing the midibridge means that an extra div will be added to your html. In this newly created div, the Java applet will be
-loaded. As soon as the applet is loaded and initialized, the callback method that you provide as argument will be called as soon
-as midi data arrives (i.e. when you play your midi keyboard).
+Initializing the midibridge means that an extra div will be added to your html. In this newly created div, the Java applet will be loaded. As soon as the applet is loaded and initialized, the callback method that you provide as argument will be called as soon as midi data arrives (i.e. when you play your midi keyboard).
 
-This is the most simple way of initializing the midibridge. Instead of a callback function you can also pass a configuration object
-as argument, this object may contains one or all of the following keys:
+This is the most simple way of initializing the midibridge. Instead of a callback function you can also pass a configuration object as argument, this object may contains one or all of the following keys:
 
   - ready : [function] callback when midibridge is ready/initialized
   - error : [function] callback in case of an error
   - data : [function] callback when midi data has arrived
+  - javaDir : [string] the folder where you store the midiapplet.jar on your webserver, defaults to "java"
   - connectAllInputs : [true,false] all found midi input devices get connected automatically
   - connectFirstOutput : [true,false] the first found midi output device gets connected automatically
   - connectAllInputsToFirstOutput : [true,false] all found midi input devices will be automatically connected to the first found midi output device, defaults to true
-  - javaDir : [string] the folder where you store the midiapplet.jar on your webserver, defaults to "java"
+
 
 The key 'connectAllInputsToFirstOutput' defaults to true, which means that after the midibridge has initialized, all midi inputs that have been detected on your computer will be automatically connected to the midibridge and to the midi output that has been detected first.
 
