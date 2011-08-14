@@ -7,8 +7,7 @@ This version is supported by all browsers that support native JSON parsing:
  
 If you want this version to work with other browsers, you can use the JSON parsing methods of your favorite Javascript framework (e.g. jQuery, Dojo, YUI, Mootools, etc.)
  
-Note for IE8 users: if you include MidiBridge.js in your html, the method addEventListener will be added to the window object.
-In fact this method is just a wrapper around the attachEvent method, see code at the bottom of the MidiBridge.js file.
+Note for IE8 users: if you include MidiBridge.js in your html, the method addEventListener will be added to the window object. In fact this method is just a wrapper around the attachEvent method, see code at the bottom of the MidiBridge.js file.
 
 The most simple way to add the midibridge to your code is like so:
 
