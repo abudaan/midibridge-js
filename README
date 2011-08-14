@@ -17,7 +17,7 @@ The most simple way to add the midibridge to your code is like so:
     
 Initializing the midibridge means that an extra div will be added to your html. In this newly created div, the Java applet will be loaded. As soon as the applet is loaded and initialized, the callback method that you provide as argument will be called as soon as midi data arrives (i.e. when you play your midi keyboard).
 
-This is the most simple way of initializing the midibridge. Instead of a callback function you can also pass a configuration object as argument, this object may contains one or all of the following keys:
+This is the most simple way of initializing the midibridge. Instead of a callback function you can also pass a configuration object as argument, this object may contain one or all of the following keys:
 
   - ready : [function] callback when midibridge is ready/initialized
   - error : [function] callback in case of an error
@@ -32,5 +32,6 @@ The key 'connectAllInputsToFirstOutput' defaults to true, which means that after
 
 Of the 3 keys 'connectAllInputs', 'connectFirstOutput' and 'connectAllInputsToFirstOutput' only one can be true at the time. So if you set one of them to true, all others will be set to false automatically.
     
+Check my blogpost for more information: http://www.abumarkub.net/abublog/?p=576    
 
  
