@@ -1,37 +1,39 @@
-This version is supported by all browsers that support native JSON parsing:
-  - Firefox 3.5+
-  - Chrome 4.0+
-  - Safari 4.0+
-  - Opera 10.5+
-  - Internet Explorer 8.0+
- 
-If you want this version to work with other browsers, you can use the JSON parsing methods of your favorite Javascript framework (e.g. jQuery, Dojo, YUI, Mootools, etc.)
- 
-Note for IE8 users: if you include MidiBridge.js in your html (or preferably the minified version of it: midibridge-0.5.min.js), the method addEventListener will be added to the window object. In fact this method is just a wrapper around the attachEvent method, see code at the bottom of the MidiBridge.js file.
+The midibridge is a Javascript API for interacting with the midi devices on your computer. 
 
-The most simple way to add the midibridge to your code is like so:
+It provides methods for detecting the midi devices and for connecting these devices with each other.
 
-    midiBridge.init(function(midiEvent) {
-        yourCoolMethod(midiEvent);
-    });
-    
-Initializing the midibridge means that an extra div will be added to your html. In this newly created div, the Java applet will be loaded. As soon as the applet is loaded and initialized, the callback method that you provide as argument will be called as soon as midi data arrives (i.e. when you play your midi keyboard).
+The midibridge itself is considered a midi device as well, so it can be connected to the detected devices.
 
-This is the most simple way of initializing the midibridge. Instead of a callback function you can also pass a configuration object as argument, this object may contain one or all of the following keys:
+The midibridge can generate and send midi events to midi output devices, and receive midi events from midi input devices.
 
-  - ready : [function] callback when midibridge is ready/initialized
-  - error : [function] callback in case of an error
-  - data : [function] callback when midi data has arrived
-  - javaDir : [string] the folder where you store the midiapplet.jar on your webserver, defaults to "java"
-  - connectAllInputs : [true,false] all found midi input devices get connected automatically
-  - connectFirstOutput : [true,false] the first found midi output device gets connected automatically
-  - connectAllInputsToFirstOutput : [true,false] all found midi input devices will be automatically connected to the first found midi output device, defaults to true
+The midibridge can also filter and alter midi events. 
+
+Recording and playing back midi events with a sequencer will be added in later versions.
+
+A midi output device is a physical output port on your computer, a virtual output port or a software synthesizer. It can also be a sequencer, a file or a function.
+
+A midi input device is a physical or virtual input port, a sequencer, a file or a function.
+
+A midi device can be both in- and output. The midibridge itself for instance is both in- and output because it can send and receive midi events.
+
+The actual interaction with the midi devices on your computer is done by a Java applet. The midibridge automatically adds the applet to your webpage.
+
+The midibridge has no visual parts, it is 'headless' code. You could say the midibridge enables you to write a 'front-end' on top of the applet. 
+
+Midi Devices -> Java Applet -> Javascript Midibridge API -> a GUI in Javascript, Flash, SVG, C# (Silverlight)
+
+Because the midibridge is written in native Javascript, you can use it conflict-free with any Javascript framework.
 
 
-The key 'connectAllInputsToFirstOutput' defaults to true, which means that after the midibridge has initialized, all midi inputs that have been detected on your computer will be automatically connected to the midibridge and to the midi output that has been detected first.
+The only files you need to get started are:
 
-Of the 3 keys 'connectAllInputs', 'connectFirstOutput' and 'connectAllInputsToFirstOutput' only one can be true at the time. So if you set one of them to true, all others will be set to false automatically.
-    
-Check my blogpost for more information: http://www.abumarkub.net/abublog/?p=576    
+/lib/midibridge-0.5.min.js
+/java/midiapplet.jar
 
- 
+
+/lib/MidiBridge.js is the non-minified version of /lib/midibridge-0.5.min.js
+
+The other files and notably the files in the /js folder are code snippets that i have used in the quick start guide and the documentation on my blogpost, see:
+
+http://www.abumarkub.net/abublog/?p=576 
+
