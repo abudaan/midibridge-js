@@ -13,9 +13,7 @@ window.addEventListener('load', function() {
             console.log(msg);
         }
     });
-    
-    console.log(midiBridge.getNoteNumber("E#",6));
-    
+        
     var noteNumbers = {
         //white keys
         65 : 48, //key a -> note c

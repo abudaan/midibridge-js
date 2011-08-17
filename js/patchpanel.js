@@ -74,9 +74,8 @@ window.addEventListener('load', function() {
         return option;
     }
     
-    var parseResult = function(jsonString){
-        var data = JSON.parse(jsonString);
-        console.log(data.msg,currentMidiInputId,currentMidiOutputId);
+    var parseResult = function(data){
+        console.log(data.msgId,currentMidiInputId,currentMidiOutputId);
     }
 
 }, false);
