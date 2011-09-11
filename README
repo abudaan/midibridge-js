@@ -27,11 +27,11 @@ Because the midibridge is written in native Javascript, you can use it conflict-
 
 The only files you need to get started are:
 
-/lib/midibridge-0.5.min.js
+/lib/midibridge-0.5.1.min.js
 /java/midiapplet.jar
 
 
-/lib/MidiBridge.js is the non-minified version of /lib/midibridge-0.5.min.js
+/lib/MidiBridge.js is the non-minified version of /lib/midibridge-0.5.1.min.js
 
 The other files and notably the files in the /js folder are code snippets that i have used in the quick start guide and the documentation on my blogpost, see:
 
