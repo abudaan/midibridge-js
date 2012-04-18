@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+    <head>
+        <title>midi bridge</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+        <!-- your javascript framework -->
+        <!--<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.1.min.js"></script> -->
+
+        <!-- other libraries -->
+        <script type="text/javascript" src="lib/swfobject.js"></script>
+
+        <!-- the midibridge -->
+        <script type="text/javascript" src="lib/midibridge-0.5.2.min.js"></script>
+
+        <!-- your javascript code -->
+        <script type="text/javascript" src="js/flash.js"></script>
+
+        <!-- your stylesheets -->
+        <link rel="stylesheet" media="screen" href="css/reset.css"/>
+    </head>
+    <body>
+        <div id="content">
+            <div id="flashdiv"></div>
+            <script type="text/javascript">
+                swfobject.embedSWF('swf/main.swf', 'flashdiv', '230px', '800px', '10.0.0', 'swf/expressinstall.swf',{},{bgcolor: "#ffffff", allowscriptaccess: "always"},{id:"flashapp"});
+            </script>
+        </div>
+    </body>
+</html>
