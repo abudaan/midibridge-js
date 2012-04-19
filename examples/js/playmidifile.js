@@ -163,7 +163,7 @@ window.addEventListener('load', function() {
             }
 
             reader.onload = function(e) {
-                loadMIDIFile(e.target.result.replace("data:audio/mid;base64,", ""));
+                loadMIDIFile(e.target.result);
             };
 
             reader.readAsDataURL(file);

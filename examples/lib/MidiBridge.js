@@ -371,6 +371,9 @@
     };
     
     midiBridge.loadBase64String = function(data){
+        if(data.indexOf("data:audio/mid;base64," === 0)){
+            data = data.replace("data:audio/mid;base64,", "")
+        }
         return parseJSON(applet.loadBase64String(data));
     };
 
