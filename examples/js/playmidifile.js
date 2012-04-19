@@ -2,7 +2,10 @@
  * Note for IE8 users: if you include MidiBridge.js in your html, the method addEventListener will be added to the window object.
  * In fact this method is just a wrapper around the attachEvent method.
  */
+
 window.addEventListener('load', function() {
+    
+    "use strict";
 
     var contentDiv = document.getElementById("content"),
         uploadUrl = "php/midiToBase64.php",
@@ -75,7 +78,7 @@ window.addEventListener('load', function() {
     });
 
     slider.addEventListener("startDrag", function(value) {
-        midiBridge.pauseSequencer()
+        midiBridge.pauseSequencer();
     });
 
     slider.addEventListener("stopDrag", function(value) {
