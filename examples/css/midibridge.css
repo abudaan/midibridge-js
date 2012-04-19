@@ -10,7 +10,7 @@ h1{
     font-size:15px;
 }
 #info{
-    margin: 5px 3px;
+    margin: 5px 3px 40px 3px;
 }
 #dropbox{
     width:500px;
@@ -24,6 +24,7 @@ h1{
 }
 #controls{
     margin:10px 0px;
+    height:20px;
 }
 #console{
     background-color: #000;
@@ -32,7 +33,7 @@ h1{
     color: #00ff00;
     border:solid 1px #000;
     padding: 4px;
-    margin: 2px 0px;
+    margin: 2px 0px 2px 0px;
     width:492px;
     height:25px;
     line-height:25px;
@@ -64,4 +65,36 @@ h1{
 select{
     float:left;
     margin:-1px 0px;
+}
+.slider{
+    border: #00A0B8 solid 1px;
+    border-radius: 3px;
+    background-color: white;
+    float:left;
+    /*margin-left: 20px;*/
+}
+
+.slider-label{
+    margin: -7px 13px 0px 10px;
+    font-family: Verdana,Arial,_sans;
+    font-size: 12px;
+    color: #333333;
+    float:left;
+}
+
+.thumb{
+    background-image: url('../img/balloon.png');
+    background-repeat: no-repeat;
+    position:relative;
+    width:34px;
+    height:28px;
+    margin-left: -17px;
+    text-align: center;
+}
+
+.thumb .label{
+    padding-top: 4px;
+    font-family: monospace;
+    color: #333333;
+    font-size: 13px;
 }

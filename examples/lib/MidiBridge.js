@@ -112,7 +112,7 @@
                     connectFirstOutput = false;
                     connectAllInputsToFirstOutput = true;
                     break;
-                
+               
 
                 
                 case connectAllInputs && connectFirstOutput:
@@ -161,13 +161,16 @@
                     break;
                                  
                 
+                case !connectAllInputsToFirstOutput:
+                    connectAllInputsToFirstOutput = false;                
+                
                 default:
                     connectAllInputsToFirstOutput = true;
                     
              
             }
             
-            //console.log(connectFirstInput,connectFirstOutput,connectAllInputs,connectAllInputsToFirstOutput);
+            //console.log(connectFirstInput,connectFirstOutput,connectAllInputs,connectAllInputsToFirstOutput,parseJSON);
         }
 
         /**
@@ -183,7 +186,7 @@
         }
 
         /**
-         * If you are using the JSON parse method of your favorite Javascript framework replace the followingn lines by onlu:
+         * If you are using the JSON parse method of your favorite Javascript framework replace the following lines by only:
          *
          *  loadJava();
          */
@@ -428,18 +431,23 @@
         var javaDiv = document.createElement("div");
         javaDiv.setAttribute("id", "midibridge-java");
         var html = "";
-        //html += '<object tabindex="0" id="midibridge-applet" type="application/x-java-applet" height="1" width="1">';
-        //html += '<param name="codebase" value="' + javaDir + '/" />';
-        //html += '<param name="archive" value="midiapplet.jar" />';
-        //html += '<param name="code" value="net.abumarkub.midi.applet.MidiApplet" />';
-        //html += '<param name="scriptable" value="true" />';
-        //html += '<param name="minJavaVersion" value="1.5" />';
-        //html += 'Your browser needs the Java plugin to use the midibridge. You can download it <a href="http://www.java.com/en/" target="blank" title="abumarkub midibridge download java" rel="abumarkub midibridge download java">here</a>';
-        //html += '</object>';
         
-        html += '<applet id="midibridge-applet" code="net.abumarkub.midi.applet.MidiApplet.class" archive="midiapplet.jar" codebase="' + javaDir + '" width="1" height="1">';
-        html += '<param name="minJavaVersion" value="1.5">';
-        html += '</applet>';
+        var ua = navigator.userAgent.toLowerCase();
+        if(ua.indexOf("chrome") === -1){
+            html += '<object tabindex="0" id="midibridge-applet" type="application/x-java-applet" height="1" width="1">';
+            html += '<param name="codebase" value="' + javaDir + '/" />';
+            html += '<param name="archive" value="midiapplet.jar" />';
+            html += '<param name="code" value="net.abumarkub.midi.applet.MidiApplet" />';
+            html += '<param name="scriptable" value="true" />';
+            html += '<param name="minJavaVersion" value="1.5" />';
+            html += 'Your browser needs the Java plugin to use the midibridge. You can download it <a href="http://www.java.com/en/" target="blank" title="abumarkub midibridge download java" rel="abumarkub midibridge download java">here</a>';
+            html += '</object>';
+        }else{
+            html += '<applet id="midibridge-applet" code="net.abumarkub.midi.applet.MidiApplet.class" archive="midiapplet.jar" codebase="' + javaDir + '" width="1" height="1">';
+            html += '<param name="minJavaVersion" value="1.5">';
+            html += '</applet>';
+        }
+                
         javaDiv.innerHTML = html;
         document.body.appendChild(javaDiv);
     }
