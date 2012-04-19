@@ -63,13 +63,13 @@ window.addEventListener('load', function() {
     sliderDiv.className = "slider";
     contentDiv.appendChild(sliderDiv);
 
-    sliderThumb = document.createElement("div");
-    sliderThumb.className = "thumb";
-    sliderDiv.appendChild(sliderThumb);
+    thumbDiv = document.createElement("div");
+    thumbDiv.className = "thumb";
+    sliderDiv.appendChild(thumbDiv);
 
-    sliderLabel = document.createElement("div");
-    sliderLabel.className = "label";
-    sliderThumb.appendChild(sliderLabel);
+    labelDiv = document.createElement("div");
+    labelDiv.className = "label";
+    thumbDiv.appendChild(labelDiv);
 
     slider = new abumarkub.ui.Slider("position", 500, 8, 0, 100, 0);
     slider.addEventListener("changed", function(value) {
@@ -101,7 +101,7 @@ window.addEventListener('load', function() {
 
     function loadMIDIFile(base64data) {
         var data = midiBridge.loadBase64String(base64data);
-        //console.log(data);
+        console.log(data);
         //slider.setAttribute("value", "0");
         //slider.setAttribute("max", (data.microseconds/1000) >> 0);
         info.innerHTML = "<span class='label'>file:</span> <span class='value'>" + fileName + "</span> ";
