@@ -33,6 +33,8 @@ The only files you need to get started are:
 
 /lib/MidiBridge.js is the non-minified version of /lib/midibridge-0.5.3.min.js
 
+The index.html file shows you how you embed the midibridge in your html page.
+
 In the /examples folder you will find the code examples that i have used in the quick start guide and the documentation on my blogpost, see:
 
 http://www.abumarkub.net/abublog/?p=399 
