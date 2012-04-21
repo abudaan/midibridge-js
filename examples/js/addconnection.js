@@ -21,10 +21,10 @@ window.addEventListener('load', function () {
                 console.log(device);
             }
             /*
-             * create a connection between MIDI input 5 and MIDI output 7
+             * create a connection between MIDI input 6 and MIDI output 7
              * adjust this according to your system!
              */
-            midiBridge.addConnection(5,7,[midiBridge.PITCH_BEND]);
+            midiBridge.addConnection(6,7,[midiBridge.PITCH_BEND]);
         },
         error: function(msg) {
             contentDiv.innerHTML += msg + "<br/>";

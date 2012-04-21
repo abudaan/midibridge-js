@@ -72,14 +72,6 @@
     var connectAllInputsToFirstOutput = true;
     var javaDir = "java";
     var devices = {};
-    var debug = false;
-    //these are the commands that the midibridge passes on to Javascript
-    var midiCommands = {};
-    midiCommands[midiBridge.NOTE_OFF] = 1;
-    midiCommands[midiBridge.NOTE_ON] = 1;
-    midiCommands[midiBridge.CONTROL_CHANGE] = 1;
-    midiCommands[midiBridge.PITCH_BEND] = 1;
-    midiCommands[midiBridge.PROGRAM_CHANGE] = 1;
     midiBridge.version = "0.5.2";
     midiBridge.ready = false;
     midiBridge.noteNameModus = midiBridge.NOTE_NAMES_SHARP;
@@ -105,13 +97,6 @@
             ondata = arg;
         } else if (typeof arg === "object") {
             var config = arg;
-            debug = config.debug;
-            if(config.midiCommands){
-                midiCommands = {};
-                for(var i = 0; i < config.midiCommands.length; i++){
-                    midiCommands[config.midiCommands[i]] = 1;
-                }
-            }
             connectAllInputs = config.connectAllInputs;
             connectFirstInput = config.connectFirstInput;
             connectFirstOutput = config.connectFirstOutput;
@@ -176,9 +161,8 @@
                     break;
                                  
                 
-                case connectAllInputsToFirstOutput == false:
+                case !connectAllInputsToFirstOutput:
                     connectAllInputsToFirstOutput = false;                
-                    break;
                 
                 default:
                     connectAllInputsToFirstOutput = true;
@@ -186,9 +170,7 @@
              
             }
             
-            if(debug){
-                console.log(connectFirstInput,connectFirstOutput,connectAllInputs,connectAllInputsToFirstOutput,parseJSON,midiCommands);
-            }
+            //console.log(connectFirstInput,connectFirstOutput,connectAllInputs,connectAllInputsToFirstOutput,parseJSON);
         }
 
         /**
@@ -264,11 +246,8 @@
                 break;
             case "midi-data":
                 if(ondata) {
-                    //if(midiBridge.getStatus(data.status) === undefined){
-                    if(midiCommands[data.status] === undefined){
-                        if(debug){
-                            console.log("MIDI message with status code", data.status, "intercepted");
-                        }
+                    if(midiBridge.getStatus(data.status) === undefined){
+                        console.log("weird MIDI message intercepted", data.status);
                         return;
                     }
                     ondata(new MidiMessage(data));
@@ -553,13 +532,13 @@
     midiBridge.getNiceTime = function(microseconds)
     {
         //console.log(microseconds);
-        var r = "",     
+        var r = "",		
         t     = (microseconds / 1000 / 1000) >> 0,
         h     = (t / (60 * 60)) >> 0,
         m     = ((t % (60 * 60)) / 60) >> 0,
         s     = t % (60),
         ms    = (((microseconds /1000) - (h * 3600000) - (m * 60000) - (s * 1000)) + 0.5) >> 0;
-    
+	
         //console.log(t,h,m,s,ms);
         
         r += h > 0 ?  h + ":" : "";

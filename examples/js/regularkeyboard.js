@@ -5,7 +5,9 @@
 window.addEventListener('load', function() {
 
     midiBridge.init({
+        
         connectFirstOutput : true,
+        
         ready : function(msg) {
             connectKeyboard();
         },

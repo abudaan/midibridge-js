@@ -13,6 +13,7 @@ window.addEventListener('load', function() {
     midiInputs.setAttribute("id", "midi-in");
     contentDiv.appendChild(midiInputs);
     midiInputs.addEventListener("change", function(e) {
+        clearCurrentConnection();
         var device = midiInputs.options[midiInputs.selectedIndex];
         currentMidiInputId = device.id;
         //console.log(currentMidiInputId, currentMidiOutputId);
@@ -25,12 +26,20 @@ window.addEventListener('load', function() {
     midiOutputs.setAttribute("id", "midi-out");
     contentDiv.appendChild(midiOutputs);
     midiOutputs.addEventListener("change", function(e) {
+        clearCurrentConnection();
         var device = midiOutputs.options[midiOutputs.selectedIndex];
         currentMidiOutputId = device.id;
         //console.log(currentMidiInputId, currentMidiOutputId);
         var result = midiBridge.addConnection(currentMidiInputId, currentMidiOutputId, [midiBridge.PITCH_BEND]);
         parseResult(result);
     }, false);
+    
+    var clearCurrentConnection = function(){
+        if(currentMidiInputId === -1 && currentMidiOutputId === -1){
+            return;
+        }
+        midiBridge.removeConnection(currentMidiInputId,currentMidiOutputId);
+    }
     
     var midiDataOutput = document.createElement("output");
     midiDataOutput.style['clear'] = "left";
@@ -41,6 +50,8 @@ window.addEventListener('load', function() {
 
     midiBridge.init({
         connectAllInputsToFirstOutput : false,
+        //debug : true,
+        //midiCommands : [midiBridge.NOTE_ON,midiBridge.NOTE_OFF],
 
         ready : function(msg) {
             devices = midiBridge.getDevices();

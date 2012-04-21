@@ -44,6 +44,8 @@ window.addEventListener('load', function() {
     controls.appendChild(btnStop);
     btnStop.addEventListener("click", function() {
         midiBridge.stopSequencer();
+        slider.setPercentage(0);
+        info.getElementsByTagName("span")[7].innerHTML = "0:00:000";
         output.innerHTML = "";
     }, false);
 
@@ -101,7 +103,7 @@ window.addEventListener('load', function() {
 
     function loadMIDIFile(base64data) {
         var data = midiBridge.loadBase64String(base64data);
-        console.log(data);
+        //console.log(data);
         //slider.setAttribute("value", "0");
         //slider.setAttribute("max", (data.microseconds/1000) >> 0);
         info.innerHTML = "<span class='label'>file:</span> <span class='value'>" + fileName + "</span> ";
@@ -109,7 +111,7 @@ window.addEventListener('load', function() {
         info.innerHTML += "<span class='label'>ticks:</span><span class='value'>" + data.ticks + "</span> ";
         info.innerHTML += "<span class='label'>position:</span><span id='position' class='value'>0:00:000</span>";
 
-        fileDuration = data.microseconds / 1000;
+        fileDuration = data.microseconds/1000;
         slider.setRange(0, fileDuration);
 
         position = info.querySelector("#position");
@@ -186,7 +188,7 @@ window.addEventListener('load', function() {
             output.innerHTML = midiEvent + "<br/>";
             output.scrollTop = output.scrollHeight;
             //slider.setAttribute("value", (midiEvent.microsecond/1000) >> 0);
-            slider.setPercentage(((midiEvent.microsecond / 1000) >> 0) / fileDuration, false);
+            slider.setPercentage(((midiEvent.microsecond / 1000) >> 0) / (fileDuration), false);
             position.innerHTML = midiEvent.time;
             //console.log(midiEvent,midiEvent.microsecond);
         }

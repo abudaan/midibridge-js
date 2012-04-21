@@ -6,7 +6,10 @@ window.addEventListener('load', function() {
     
     var contentDiv = document.getElementById("content");
     
-    midiBridge.init({ connectAllInputsToFirstOutput: false,
+    midiBridge.init({ 
+        
+        connectAllInputsToFirstOutput: false,
+        
         ready: function(msg){
             //contentDiv.innerHTML += msg + "<br/>";
 
