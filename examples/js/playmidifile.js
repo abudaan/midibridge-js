@@ -86,6 +86,10 @@ window.addEventListener('load', function() {
     slider.addEventListener("stopDrag", function(value) {
         midiBridge.startSequencer()
     });
+    
+    abumarkub.ui.createMIDIProgramSelector(controls,function(programId){
+        midiBridge.sendMidiEvent(midiBridge.PROGRAM_CHANGE, 0, programId, 0)
+    });
 
     /*
     slider = document.createElement("input");
