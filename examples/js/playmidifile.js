@@ -5,7 +5,7 @@
 
 window.addEventListener('load', function() {
     
-    "use strict";
+    //"use strict";
 
     var contentDiv = document.getElementById("content"),
         uploadUrl = "php/midiToBase64.php",
