@@ -242,6 +242,7 @@
             case "midi-started":
                 getApplet();
                 if(applet) {
+                    //console.log(applet.disconnectAll());
                     devices = data.devices;
                     midiBridge.ready = true;
                     if(connectAllInputs) {

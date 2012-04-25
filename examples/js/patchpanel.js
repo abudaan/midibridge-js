@@ -35,15 +35,18 @@ window.addEventListener('load', function() {
     }, false);
     
     var clearCurrentConnection = function(){
+                
         if(currentMidiInputId === -1 && currentMidiOutputId === -1){
             return;
         }
         midiBridge.removeConnection(currentMidiInputId,currentMidiOutputId);
     }
     
-    var midiDataOutput = document.createElement("output");
+    var midiDataOutput = document.createElement("div");
     midiDataOutput.style['clear'] = "left";
     midiDataOutput.style['float'] = "left";
+    //midiDataOutput.style['height'] = "400px";
+    //midiDataOutput.style['overflow'] = "auto";
     contentDiv.appendChild(midiDataOutput);
 
     var devices;
