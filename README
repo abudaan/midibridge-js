@@ -27,7 +27,7 @@ Because the midibridge is written in native Javascript, you can use it conflict-
 
 The only files you need to get started are:
 
-/lib/midibridge-0.5.3.min.js
+/lib/midibridge-0.5.4.min.js
 /java/midiapplet.jar
 
 
