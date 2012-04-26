@@ -179,6 +179,8 @@ window.addEventListener('load', function() {
     midiBridge.init({
         connectAllInputsToFirstOutput: false,
         connectFirstOutput: true,
+        //debug:true,
+        //midiCommands:[midiBridge.NOTE_OFF,midiBridge.NOTE_ON],
 
         ready: function(msg) {
             loadMIDIFile(chopin_opus18);
@@ -194,7 +196,7 @@ window.addEventListener('load', function() {
             //slider.setAttribute("value", (midiEvent.microsecond/1000) >> 0);
             slider.setPercentage(((midiEvent.microsecond / 1000) >> 0) / (fileDuration), false);
             position.innerHTML = midiEvent.time;
-            //console.log(midiEvent,midiEvent.microsecond);
+            //console.log(midiEvent.channel);
         }
     });
 }, false);

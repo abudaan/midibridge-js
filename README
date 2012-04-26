@@ -31,7 +31,7 @@ The only files you need to get started are:
 /java/midiapplet.jar
 
 
-/lib/MidiBridge.js is the non-minified version of /lib/midibridge-0.5.3.min.js
+/lib/MidiBridge.js is the non-minified version of /lib/midibridge-0.5.4.min.js
 
 The index.html file shows you how you embed the midibridge in your html page; you can use this basic example as a starting point of your own code.
 
