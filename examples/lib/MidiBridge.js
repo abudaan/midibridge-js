@@ -546,15 +546,25 @@
     var MidiMessage = (function()//constructor
     {
         var _constructor = function(data) {
+//            if(data.channel == 1){
+//                console.log(data.status,data.command,data.data2);
+//            }
+            
             this.data1 = data.data1;
             this.data2 = data.data2;
+            this.command = data.data2 == 0 && data.command == midiBridge.NOTE_ON ? midiBridge.NOTE_OFF : midiBridge.NOTE_ON;
             this.status = data.status;
-            this.status = this.data2 === "0" && this.status == midiBridge.NOTE_ON ? midiBridge.NOTE_OFF : this.status;
+            this.status = data.data2 == 0 && data.command == midiBridge.NOTE_ON ? (midiBridge.NOTE_OFF + parseInt(data.channel)) : data.status;
             this.channel = data.channel;
             this.noteName = midiBridge.getNoteName(this.data1, midiBridge.noteNameModus);
             this.statusCode = midiBridge.getStatus(this.status);
             this.microsecond = data.microsecond;
             this.time = midiBridge.getNiceTime(this.microsecond);
+
+//            if(data.channel == 1){
+//                console.log(this.status,this.command);
+//                console.log("====");
+//            }
         };
 
         _constructor.prototype = {
