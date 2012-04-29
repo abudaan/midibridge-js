@@ -468,27 +468,20 @@
     var MidiMessage = (function()//constructor
     {
         var _constructor = function(data) {
-            //            if(data.channel == 1){
-            //                console.log(data.status,data.command,data.data2);
-            //            }
-            
+            this.command = data.command;
+            this.channel = data.channel;
             this.data1 = data.data1;
             this.data2 = data.data2;
             this.status = data.status;
-            this.channel = data.channel;
             this.noteName = midiBridge.getNoteName(this.data1, midiBridge.noteNameModus);
             this.statusCode = midiBridge.getStatus(this.status);
             this.microsecond = data.microsecond;
             this.time = midiBridge.getNiceTime(this.microsecond);
+
             if(this.command == midiBridge.NOTE_ON && this.data2 == 0){
                 this.command = midiBridge.NOTE_OFF;
                 this.status = this.command + this.channel;
             }
-
-        //            if(data.channel == 1){
-        //                console.log(this.status,this.command);
-        //                console.log("====");
-        //            }
         };
 
         _constructor.prototype = {
@@ -539,7 +532,7 @@
         if(index === -1) {
             return "invalid note name";
         }
-        noteNumber = (12 + index) + (octave * 12);
+        var noteNumber = (12 + index) + (octave * 12);
         return noteNumber;
     };
 
