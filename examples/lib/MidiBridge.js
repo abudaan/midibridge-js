@@ -285,7 +285,7 @@
             }
         }
     };
-
+    
     /**
      * static method called by the applet
      */
@@ -456,10 +456,7 @@
     };
     
     midiBridge.loadBase64String = function(data){
-        if(data.indexOf("data:audio/mid;base64," === 0)){
-            data = data.replace("data:audio/mid;base64,", "")
-        }
-        return parseJSON(applet.loadBase64String(data));
+        return parseJSON(applet.loadBase64String(data.replace(/data:audio\/mid[i]?;base64,/,"")));
     };
 
     midiBridge.playBase64String = function(data){
@@ -552,14 +549,16 @@
             
             this.data1 = data.data1;
             this.data2 = data.data2;
-            this.command = data.data2 == 0 && data.command == midiBridge.NOTE_ON ? midiBridge.NOTE_OFF : midiBridge.NOTE_ON;
             this.status = data.status;
-            this.status = data.data2 == 0 && data.command == midiBridge.NOTE_ON ? (midiBridge.NOTE_OFF + parseInt(data.channel)) : data.status;
             this.channel = data.channel;
             this.noteName = midiBridge.getNoteName(this.data1, midiBridge.noteNameModus);
             this.statusCode = midiBridge.getStatus(this.status);
             this.microsecond = data.microsecond;
             this.time = midiBridge.getNiceTime(this.microsecond);
+            if(this.command == midiBridge.NOTE_ON && this.data2 == 0){
+                this.command = midiBridge.NOTE_OFF;
+                this.status = this.command + this.channel;
+            }
 
 //            if(data.channel == 1){
 //                console.log(this.status,this.command);
