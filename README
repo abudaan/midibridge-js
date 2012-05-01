@@ -1,4 +1,4 @@
-NOTE: this version is deprecated, please use the new version at https://github.com/abudaan/midibridge
+NOTE: this version has been deprecated, please use the new version at https://github.com/abudaan/midibridge
 
 
 The midibridge is a Javascript API for interacting with the midi devices on your computer. 
